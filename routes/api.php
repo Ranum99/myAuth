@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Middleware\UserVerifiedMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*

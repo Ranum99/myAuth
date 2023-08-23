@@ -82,7 +82,6 @@ class UserAuthController extends Controller
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
             'remember_token' => $remember_token,
-            'verified' => 0
         ]);
 
         if ($user) {
