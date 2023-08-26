@@ -16,15 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/user/register', [UserAuthController::class, 'register']); //
-Route::post('/user/login', [UserAuthController::class, 'login']); //
-Route::post('/user/forgot_password', [UserAuthController::class, 'forgot_password']); //
-Route::post('/user/reset_password/{email}/{token}', [UserAuthController::class, 'reset_password']); //
+Route::post('/user/register', [UserAuthController::class, 'register']);
+Route::post('/user/login', [UserAuthController::class, 'login']);
+Route::post('/user/forgot_password', [UserAuthController::class, 'forgot_password']);
+Route::post('/user/reset_password/{email}/{token}', [UserAuthController::class, 'reset_password']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/user/logout', [UserAuthController::class, 'logout']); //
-    Route::get('/user', [UserAuthController::class, 'getSelf']); //
+    Route::post('/user/logout', [UserAuthController::class, 'logout']);
+    Route::get('/user', [UserAuthController::class, 'getSelf']);
     Route::put('/user', [UserAuthController::class, 'update']);
+    Route::put('/user/image', [UserAuthController::class, 'updateProfilePic']);
+    Route::delete('/user/image', [UserAuthController::class, 'deleteProfilePic']);
     Route::delete('/user', [UserAuthController::class, 'destroy']);
 
     Route::group(['middleware' => ['auth:sanctum', UserVerifiedMiddleware::class]], function () {

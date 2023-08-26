@@ -16,17 +16,6 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'users_id');
     }
 
-    public function preferences()
-    {
-        return $this->hasOne(Preference::class, 'users_id');
-    }
-
-    public function matches()
-    {
-        return $this->hasManyThrough(MatchModel::class, Profile::class, 'users_id', 'profile_one_id')
-            ->orWhere('profile_two_id', $this->id);
-    }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -36,7 +25,6 @@ class User extends Authenticatable
         'email',
         'password',
         'remember_token',
-        'verified',
     ];
 
     /**

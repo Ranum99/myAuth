@@ -16,7 +16,7 @@ class VerificationMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private $verificationUrl)
+    public function __construct(private $name, private $verificationUrl)
     {
         //
     }
@@ -40,6 +40,7 @@ class VerificationMail extends Mailable
         return new Content(
             view: 'mail.verification',
             with: [
+                'name' => $this->name,
                 'verificationUrl' => $this->verificationUrl
             ],
         );

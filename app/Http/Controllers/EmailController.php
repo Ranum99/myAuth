@@ -46,7 +46,7 @@ class EmailController extends Controller
                 $remember_token = Str::random();
 
                 $verificationUrl = url("/verify/$user->id/$remember_token");
-                Mail::to($user->email)->send(new VerificationMail($verificationUrl));
+                Mail::to($user->email)->send(new VerificationMail($user->profile->name, $verificationUrl));
 
                 $user->remember_token = $remember_token;
                 $user->save();

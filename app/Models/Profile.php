@@ -22,16 +22,7 @@ class Profile extends Model
     protected $fillable = [
         'users_id',
         'name',
-        'image',
-        'date_of_birth',
-        'height',
-        'work',
-        'school',
         'bio',
-        'gender',
-        'latitude',
-        'longitude',
-        'hidden',
     ];
 
     /**
@@ -40,20 +31,6 @@ class Profile extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'users_id',
-        'latitude',
-        'longitude',
-        'hidden',
-        'created_at',
         'updated_at',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'date_of_birth' => 'date',
     ];
 }

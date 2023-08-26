@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->string('name');
+            $table->string('image')->default('default.png');
             $table->text('bio')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 
